@@ -212,7 +212,7 @@ var PinchZoom = (function () {
       }
     }
 
-    var css = "pinch-zoom {\n  display: block;\n  overflow: hidden;\n  touch-action: none;\n  --scale: 1;\n  --x: 0;\n  --y: 0;\n}\n\npinch-zoom > * {\n  transform: translate(var(--x), var(--y)) scale(var(--scale));\n  transform-origin: 0 0;\n  will-change: transform;\n}\n";
+    var css = "pinch-zoom {\r\n  display: block;\r\n  overflow: hidden;\r\n  touch-action: none;\r\n  --scale: 1;\r\n  --x: 0;\r\n  --y: 0;\r\n}\r\n\r\npinch-zoom > * {\r\n  transform: translate(var(--x), var(--y)) scale(var(--scale));\r\n  transform-origin: 0 0;\r\n  will-change: transform;\r\n}\r\n";
     styleInject(css);
 
     const minScaleAttr = 'min-scale';
@@ -234,7 +234,7 @@ var PinchZoom = (function () {
     function getAbsoluteValue(value, max) {
         if (typeof value === 'number')
             return value;
-        if (value.trimRight().endsWith('%')) {
+        if (/% *$/.test(value)) {
             return max * parseFloat(value) / 100;
         }
         return parseFloat(value);
